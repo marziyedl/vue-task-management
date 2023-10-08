@@ -12,7 +12,7 @@ const props = defineProps<TaskProps>();
         <Badge :type="props.status" />
         <h5 class="text-lg">{{ props.title }}</h5>
       </div>
-      <p class="box-content mt-2">{{ props.content }}</p>
+      <p class="box-content mt-2 min-h-[5vh]">{{ props.content }}</p>
     </section>
   </router-link>
 </template>
