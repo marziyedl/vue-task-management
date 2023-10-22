@@ -18,7 +18,7 @@ import { type BadgePropsModel } from "@/models/badge.model";
 import { useField } from "vee-validate";
 
 const props = defineProps<{
-  options: { value: BadgePropsModel, label: string }[],
+  options: { [key: string]: { value: BadgePropsModel, label: string } },
   name: string,
 }>();
 

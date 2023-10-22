@@ -6,12 +6,15 @@ const mockData: TaskProps[] = [
 ]
 
 export default function useFetchDataFromLocalStorage() {
-    let data = localStorage.getItem('tasks') || ''
-    if (!data) {
-        localStorage.setItem('tasks', JSON.stringify(mockData))
-        return mockData
-    }
+    const fetchTasks = () => {
+        let data = localStorage.getItem('tasks') || ''
+        if (!data) {
+            localStorage.setItem('tasks', JSON.stringify(mockData))
+            return mockData
+        }
 
-    return JSON.parse(data) as TaskProps[];
+        return JSON.parse(data) as TaskProps[];
+    }
+    return {fetchTasks}
 }
 
