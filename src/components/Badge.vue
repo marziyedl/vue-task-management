@@ -1,11 +1,12 @@
 <template>
-  <div :class="BadgeModel[props.type] + ' text-white p-1 rounded-md'">
-    <small> {{ props.type }}</small>
+  <div :class="BadgeOptions[props.type].color + ' text-white p-1 rounded-md'">
+    <small> {{ BadgeOptions[props.type].label }}</small>
   </div>
 </template>
 
 <script setup lang="ts">
-import { type BadgePropsModel, BadgeModel } from "../models/badge.model";
+import { BadgeOptions } from "@/constants/BadgeOptions";
+import { type BadgePropsModel } from "../models/badge.model";
 
 const props = defineProps<{ type: BadgePropsModel }>();
 </script>
