@@ -1,13 +1,40 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
-import useFetchDataFromLocalStorage from '@/composable/useFetchDataFromLocalStorage';
-import Task from '@/components/Task.vue';
+import { onMounted, reactive, ref } from "vue";
+import useFetchDataFromLocalStorage from "@/composable/useFetchDataFromLocalStorage";
+import Task from "@/components/Task.vue";
+import Modal from "@/components/Modal.vue";
+import type TaskProps from "@/models/task.model";
+import { useDeleteTask } from "@/composable/useDeleteTask";
 
-const tasks = reactive(useFetchDataFromLocalStorage())
+const { fetchTasks } = useFetchDataFromLocalStorage();
+const { items, deleteItem } = useDeleteTask("tasks");
+
+const  tasks = ref<TaskProps[]>([])  
+
+const isOpen = ref<boolean>(false);
+const currentTask =ref<TaskProps>();
+const openModal = (task:TaskProps) => {
+  isOpen.value = true;
+  currentTask.value = task
+};
+
+onMounted(() => {
+tasks.value = fetchTasks()
+})
+const onDeleteItem = (id:string = '') => {
+  deleteItem(id)
+  tasks.value = fetchTasks()
+  isOpen.value = false;
+
+}
 </script>
 
 <template>
   <main class="container mt-3 mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-    <Task  v-for=" task in tasks" :title="task.title" :id="task.id" :status="task.status" :content="task.content" />
+    <section v-for="task in tasks">
+      <Task :title="task.title" :id="task.id" :status="task.status" :content="task.content"
+        @on-task-click="openModal(task)" />
+    </section>
   </main>
+  <Modal v-model:is-open="isOpen" @on-Ok="onDeleteItem(currentTask?.id)"></Modal>
 </template>
