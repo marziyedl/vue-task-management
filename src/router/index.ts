@@ -22,6 +22,11 @@ const router = createRouter({
       name: 'create',
       component: CreateTaskVue
     },
+    {
+      path: '/update/:id',
+      name: 'update',
+      component: CreateTaskVue
+    },
   ]
 })
 
