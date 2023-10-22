@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import "./style.css"
-
-// const tasks = reactive(useFetchDataFromLocalStorage())
-// console.log(tasks);
+import Header from "@/layout/Header.vue"
+import Footer from "@/layout/Footer.vue"
 </script>
 
 <template>
+  <Header></Header>
   <router-view></router-view>
+  <Footer></Footer>
 </template>
