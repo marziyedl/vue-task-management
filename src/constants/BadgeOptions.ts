@@ -1,6 +1,6 @@
-import type { BadgePropsModel } from "@/models/badge.model";
+import type { BadgeModel } from "@/models/badge.model";
 
-export const BadgeOptions: { [key: string]: { value: BadgePropsModel, label: string, color: string } } = {
+export const BadgeOptions: { [key: string]: { value: BadgeModel, label: string, color: string } } = {
   toDo: {
     value: 'toDo',
     label: "To do",

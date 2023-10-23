@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Badge from "./Badge.vue";
-import type TaskProps from "../models/task.model";
+import type TaskModel from "../models/task.model";
 
-const props = defineProps<TaskProps>();
+const props = defineProps<TaskModel>();
 
 defineEmits(['onTaskClick'])
 

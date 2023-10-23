@@ -1,9 +1,9 @@
-import type TaskProps from "@/models/task.model";
+import type TaskModel from "@/models/task.model";
 
-export default function useFetchById<typeTaskProps>(storageKey: string = 'tasks') {
-    const getById = (id: string): TaskProps | null => {
+export default function useFetchById<typeTaskModel>(storageKey: string = 'tasks') {
+    const getById = (id: string): TaskModel | null => {
         try {
-            const items = JSON.parse(localStorage.getItem(storageKey) || '[]') as TaskProps[];
+            const items = JSON.parse(localStorage.getItem(storageKey) || '[]') as TaskModel[];
 
             const foundItem = items.find((item) => item.id === id);
 

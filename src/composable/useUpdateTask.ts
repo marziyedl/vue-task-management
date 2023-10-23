@@ -1,24 +1,24 @@
 // useUpdateTask.ts
-import type TaskProps from '@/models/task.model';
+import type TaskModel from '@/models/task.model';
 
 export default function useUpdateTask() {
-    const updateTask = (updatedTask: TaskProps) => {
+    const updateTask = (updatedTask: TaskModel) => {
         try {
-            const existingTasks = JSON.parse(localStorage.getItem('tasks')|| '[]') || [];
-            const index = existingTasks.findIndex((task: TaskProps) => task.id === updatedTask.id);
+            const existingTasks = JSON.parse(localStorage.getItem('tasks') || '[]') || [];
+            const index = existingTasks.findIndex((task: TaskModel) => task.id === updatedTask.id);
 
             if (index !== -1) {
                 existingTasks[index] = updatedTask;
                 localStorage.setItem('tasks', JSON.stringify(existingTasks));
 
-                return true; 
+                return true;
             } else {
                 console.error('Task not found');
-                return false; 
+                return false;
             }
         } catch (error) {
             console.error('Error updating task:', error);
-            return false; 
+            return false;
         }
     };
 

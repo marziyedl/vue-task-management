@@ -1,6 +1,6 @@
-import type TaskProps from "@/models/task.model";
+import type TaskModel from "@/models/task.model";
 
-const mockData: TaskProps[] = [
+const mockData: TaskModel[] = [
     { id: '1', title: '121216', content: '', status: 'toDo' },
     { id: '2', title: 'Title', content: '', status: 'done' }
 ]
@@ -13,8 +13,8 @@ export default function useFetchDataFromLocalStorage() {
             return mockData
         }
 
-        return JSON.parse(data) as TaskProps[];
+        return JSON.parse(data) as TaskModel[];
     }
-    return {fetchTasks}
+    return { fetchTasks }
 }
 

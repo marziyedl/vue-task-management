@@ -38,7 +38,7 @@
 import useCreateTask from "@/composable/useCreateTask";
 import CustomRadio from "@/components/CustomRadio.vue";
 import { BadgeOptions } from "@/constants/BadgeOptions";
-import type TaskProps from "@/models/task.model";
+import type TaskModel from "@/models/task.model";
 import useFetchById from "@/composable//useFetchById";
 
 import { Form, Field, useForm } from "vee-validate";
@@ -63,18 +63,18 @@ onMounted(() => {
 });
 
 const onSubmit = handleSubmit((values) => {
-  if (isUpdate) updateCurrentTask(values as TaskProps)
-  else createNewTask(values as TaskProps)
+  if (isUpdate) updateCurrentTask(values as TaskModel)
+  else createNewTask(values as TaskModel)
   
   route.push("/")
 });
 
-const updateCurrentTask = (formValues: TaskProps) => {
+const updateCurrentTask = (formValues: TaskModel) => {
   const response = updateTask({ ...formValues, id: route.currentRoute.value.params.id.toString() });
   if (response) console.log("ok");
 }
 
-const createNewTask = (formValues: TaskProps) => {
+const createNewTask = (formValues: TaskModel) => {
   const response = createTask(formValues);
   if (response) console.log("ok");
 }

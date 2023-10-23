@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { BadgeOptions } from "@/constants/BadgeOptions";
-import { type BadgePropsModel } from "../models/badge.model";
+import { type BadgeModel } from "../models/badge.model";
 
-const props = defineProps<{ type: BadgePropsModel }>();
+const props = defineProps<{ type: BadgeModel }>();
 </script>

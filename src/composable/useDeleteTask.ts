@@ -1,10 +1,9 @@
-// useLocalStorage.js
 
-import type TaskProps from "@/models/task.model";
+import type TaskModel from "@/models/task.model";
 import { ref, onMounted } from "vue";
 
 export function useDeleteTask(key: string = 'tasks') {
-    const items = ref<TaskProps[]>([]);
+    const items = ref<TaskModel[]>([]);
 
     onMounted(() => {
         const storedData = localStorage.getItem(key);

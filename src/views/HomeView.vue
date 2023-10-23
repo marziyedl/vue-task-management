@@ -3,17 +3,17 @@ import { onMounted, reactive, ref } from "vue";
 import useFetchDataFromLocalStorage from "@/composable/useFetchDataFromLocalStorage";
 import Task from "@/components/Task.vue";
 import Modal from "@/components/Modal.vue";
-import type TaskProps from "@/models/task.model";
+import type TaskModel from "@/models/task.model";
 import { useDeleteTask } from "@/composable/useDeleteTask";
 
 const { fetchTasks } = useFetchDataFromLocalStorage();
-const { items, deleteItem } = useDeleteTask("tasks");
+const {deleteItem } = useDeleteTask("tasks");
 
-const  tasks = ref<TaskProps[]>([])  
+const  tasks = ref<TaskModel[]>([])  
 
 const isOpen = ref<boolean>(false);
-const currentTask =ref<TaskProps>();
-const openModal = (task:TaskProps) => {
+const currentTask =ref<TaskModel>();
+const openModal = (task:TaskModel) => {
   isOpen.value = true;
   currentTask.value = task
 };

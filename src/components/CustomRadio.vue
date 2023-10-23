@@ -14,11 +14,11 @@
 </template>
 
 <script setup lang="ts">
-import { type BadgePropsModel } from "@/models/badge.model";
+import { type BadgeModel } from "@/models/badge.model";
 import { useField } from "vee-validate";
 
 const props = defineProps<{
-  options: { [key: string]: { value: BadgePropsModel, label: string } },
+  options: { [key: string]: { value: BadgeModel, label: string } },
   name: string,
 }>();
 
