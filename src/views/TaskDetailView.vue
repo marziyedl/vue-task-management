@@ -4,7 +4,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import Badge from "@/components/Badge.vue";
 
-const { getById } = useFetchById<{ id: string }>("tasks");
+const { getById } = useFetchById();
 const route = useRouter();
 const taskDetail = ref(getById(route.currentRoute.value.params.id as string));
 </script>

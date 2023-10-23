@@ -6,7 +6,7 @@ import type TaskModel from "@/models/task.model";
 import { useDeleteTask ,useFetchAll} from "@/composable";
 
 const { fetchTasks } = useFetchAll();
-const {deleteItem } = useDeleteTask("tasks");
+const {deleteItem } = useDeleteTask();
 
 const  tasks = ref<TaskModel[]>([])  
 const isOpen = ref<boolean>(false);

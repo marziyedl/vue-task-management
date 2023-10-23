@@ -37,7 +37,7 @@
 <script setup lang="ts">
 import { useCreateTask, useFetchById ,useUpdateTask} from "@/composable";
 import CustomRadio from "@/components/CustomRadio.vue";
-import { BadgeOptions } from "@/constants/BadgeOptions";
+import { BadgeOptions } from "@/constants";
 import type TaskModel from "@/models/task.model";
 
 import { Form, Field, useForm } from "vee-validate";

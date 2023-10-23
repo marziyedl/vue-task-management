@@ -1,3 +1,5 @@
+import { TASK_KEY } from "@/constants";
+import { getDataFromLocalStorage, setDataInLocalStorage } from "@/helper";
 import type TaskModel from "@/models/task.model";
 
 const mockData: TaskModel[] = [
@@ -7,9 +9,9 @@ const mockData: TaskModel[] = [
 
 export function useFetchAll() {
     const fetchTasks = () => {
-        let data = localStorage.getItem('tasks') || ''
+        let data = getDataFromLocalStorage(TASK_KEY) || ''
         if (!data) {
-            localStorage.setItem('tasks', JSON.stringify(mockData))
+            setDataInLocalStorage(TASK_KEY, mockData)
             return mockData
         }
 

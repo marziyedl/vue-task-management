@@ -1,12 +1,14 @@
 
+import { TASK_KEY } from "@/constants";
+import { getDataFromLocalStorage, setDataInLocalStorage } from "@/helper";
 import type TaskModel from "@/models/task.model";
 import { ref, onMounted } from "vue";
 
-export function useDeleteTask(key: string = 'tasks') {
+export function useDeleteTask() {
     const items = ref<TaskModel[]>([]);
 
     onMounted(() => {
-        const storedData = localStorage.getItem(key);
+        const storedData = getDataFromLocalStorage(TASK_KEY);
         if (storedData) {
             items.value = JSON.parse(storedData);
         }
@@ -18,9 +20,8 @@ export function useDeleteTask(key: string = 'tasks') {
         saveToLocalStorage();
     }
 
-
     function saveToLocalStorage() {
-        localStorage.setItem(key, JSON.stringify(items.value));
+        setDataInLocalStorage(TASK_KEY, items.value);
     }
 
     return {
