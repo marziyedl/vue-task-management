@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref } from "vue";
-import useFetchDataFromLocalStorage from "@/composable/useFetchDataFromLocalStorage";
+import { onMounted, ref } from "vue";
 import Task from "@/components/Task.vue";
 import Modal from "@/components/Modal.vue";
 import type TaskModel from "@/models/task.model";
-import { useDeleteTask } from "@/composable/useDeleteTask";
+import { useDeleteTask ,useFetchAll} from "@/composable";
 
-const { fetchTasks } = useFetchDataFromLocalStorage();
+const { fetchTasks } = useFetchAll();
 const {deleteItem } = useDeleteTask("tasks");
 
 const  tasks = ref<TaskModel[]>([])  
-
 const isOpen = ref<boolean>(false);
-const currentTask =ref<TaskModel>();
+const currentTask = ref<TaskModel>();
+
 const openModal = (task:TaskModel) => {
   isOpen.value = true;
   currentTask.value = task
@@ -25,7 +24,6 @@ const onDeleteItem = (id:string = '') => {
   deleteItem(id)
   tasks.value = fetchTasks()
   isOpen.value = false;
-
 }
 </script>
 

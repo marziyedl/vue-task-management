@@ -5,7 +5,7 @@ const mockData: TaskModel[] = [
     { id: '2', title: 'Title', content: '', status: 'done' }
 ]
 
-export default function useFetchDataFromLocalStorage() {
+export function useFetchAll() {
     const fetchTasks = () => {
         let data = localStorage.getItem('tasks') || ''
         if (!data) {

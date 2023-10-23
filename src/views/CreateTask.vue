@@ -35,16 +35,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import useCreateTask from "@/composable/useCreateTask";
+import { useCreateTask, useFetchById ,useUpdateTask} from "@/composable";
 import CustomRadio from "@/components/CustomRadio.vue";
 import { BadgeOptions } from "@/constants/BadgeOptions";
 import type TaskModel from "@/models/task.model";
-import useFetchById from "@/composable//useFetchById";
 
 import { Form, Field, useForm } from "vee-validate";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
-import useUpdateTask from "@/composable/useUpdateTask";
 
 const { handleSubmit, resetForm } = useForm();
 const { createTask } = useCreateTask();
@@ -65,7 +63,7 @@ onMounted(() => {
 const onSubmit = handleSubmit((values) => {
   if (isUpdate) updateCurrentTask(values as TaskModel)
   else createNewTask(values as TaskModel)
-  
+
   route.push("/")
 });
 

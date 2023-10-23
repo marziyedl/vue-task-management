@@ -1,7 +1,7 @@
-import { generateUniqueRandomId } from "@/constants/idGenerator";
+import { generateUniqueRandomId } from "@/helper";
 import type TaskModel from "@/models/task.model";
 
-export default function useCreateTask() {
+export  function useCreateTask() {
     const localStorageItems = localStorage.getItem('tasks') || '';
 
     const createTask = (item: TaskModel) => {

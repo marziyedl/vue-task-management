@@ -1,6 +1,6 @@
 import type TaskModel from "@/models/task.model";
 
-export default function useFetchById<typeTaskModel>(storageKey: string = 'tasks') {
+export function useFetchById<typeTaskModel>(storageKey: string = 'tasks') {
     const getById = (id: string): TaskModel | null => {
         try {
             const items = JSON.parse(localStorage.getItem(storageKey) || '[]') as TaskModel[];

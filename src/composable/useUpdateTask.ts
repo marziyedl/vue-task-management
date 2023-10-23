@@ -1,7 +1,7 @@
 // useUpdateTask.ts
 import type TaskModel from '@/models/task.model';
 
-export default function useUpdateTask() {
+export function useUpdateTask() {
     const updateTask = (updatedTask: TaskModel) => {
         try {
             const existingTasks = JSON.parse(localStorage.getItem('tasks') || '[]') || [];

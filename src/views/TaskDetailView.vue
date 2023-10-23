@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useFetchById from "@/composable/useFetchById";
+import { useFetchById } from "@/composable";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import Badge from "@/components/Badge.vue";
